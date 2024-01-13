@@ -91,7 +91,7 @@ public class RobotContainer
         () -> MathUtil.applyDeadband(driverXbox.getRawAxis(0), OperatorConstants.LEFT_X_DEADBAND),
         () -> -driverXbox.getRawAxis(4), () -> false);
 
-    drivebase.setDefaultCommand(!RobotBase.isSimulation() ? closedAbsoluteDriveAdv : closedAbsoluteDriveAdv);
+    drivebase.setDefaultCommand(!RobotBase.isSimulation() ? closedFieldRel : closedFieldRel);
   }
 
   /**
