@@ -12,6 +12,8 @@ import com.revrobotics.RelativeEncoder;
 import com.revrobotics.SparkAnalogSensor;
 import com.revrobotics.SparkPIDController;
 import edu.wpi.first.wpilibj.DriverStation;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
+
 import java.util.function.Supplier;
 import swervelib.encoders.SwerveAbsoluteEncoder;
 import swervelib.parser.PIDFConfig;
@@ -215,6 +217,7 @@ public class SparkMaxSwerve extends SwerveMotor
       configureSparkMax(() -> {
         if (absoluteEncoder.getAbsoluteEncoder() instanceof AbsoluteEncoder)
         {
+          SmartDashboard.putNumber("conversion factor", positionConversionFactor);
           return ((AbsoluteEncoder) absoluteEncoder.getAbsoluteEncoder()).setPositionConversionFactor(
               positionConversionFactor);
         } else
@@ -363,6 +366,7 @@ public class SparkMaxSwerve extends SwerveMotor
                                 feedforward));
     } else
     {
+      SmartDashboard.putNumber("ahhh", setpoint);
       configureSparkMax(() ->
                             pid.setReference(
                                 setpoint,

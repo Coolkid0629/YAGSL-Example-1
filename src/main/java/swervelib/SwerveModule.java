@@ -211,16 +211,18 @@ public class SwerveModule
 
     // Prevent module rotation if angle is the same as the previous angle.
     // Synchronize encoders if queued and send in the current position as the value from the absolute encoder.
-    if (absoluteEncoder != null && synchronizeEncoderQueued)
-    {
-      double absoluteEncoderPosition = getAbsolutePosition();
-      angleMotor.setPosition(absoluteEncoderPosition);
-      angleMotor.setReference(desiredState.angle.getDegrees(), 0, absoluteEncoderPosition);
-      synchronizeEncoderQueued = false;
-    } else
-    {
-      angleMotor.setReference(desiredState.angle.getDegrees(), 0);
-    }
+    SmartDashboard.putNumber("angle", desiredState.angle.getDegrees());
+    angleMotor.setReference(desiredState.angle.getDegrees(), 0);
+    // if (absoluteEncoder != null && synchronizeEncoderQueued)
+    // {
+    //   double absoluteEncoderPosition = getAbsolutePosition();
+    //   angleMotor.setPosition(absoluteEncoderPosition);
+    //   angleMotor.setReference(desiredState.angle.getDegrees(), 0, absoluteEncoderPosition);
+    //   synchronizeEncoderQueued = false;
+    // } else
+    // {
+    //   angleMotor.setReference(desiredState.angle.getDegrees(), 0);
+    // }
 
     lastState = desiredState;
 

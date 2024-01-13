@@ -427,7 +427,6 @@ public class SwerveDrive
 
     // Calculate required module states via kinematics
     SwerveModuleState[] swerveModuleStates = kinematics.toSwerveModuleStates(velocity, centerOfRotationMeters);
-
     setRawModuleStates(swerveModuleStates, isOpenLoop);
   }
 
@@ -461,13 +460,13 @@ public class SwerveDrive
   private void setRawModuleStates(SwerveModuleState[] desiredStates, boolean isOpenLoop)
   {
     // Desaturates wheel speeds
-    if (attainableMaxTranslationalSpeedMetersPerSecond != 0 || attainableMaxRotationalVelocityRadiansPerSecond != 0)
-    {
-      SwerveDriveKinematics.desaturateWheelSpeeds(desiredStates, getRobotVelocity(),
-                                                  maxSpeedMPS,
-                                                  attainableMaxTranslationalSpeedMetersPerSecond,
-                                                  attainableMaxRotationalVelocityRadiansPerSecond);
-    }
+    // if (attainableMaxTranslationalSpeedMetersPerSecond != 0 || attainableMaxRotationalVelocityRadiansPerSecond != 0)
+    // {
+    //   SwerveDriveKinematics.desaturateWheelSpeeds(desiredStates, getRobotVelocity(),
+    //                                               maxSpeedMPS,
+    //                                               attainableMaxTranslationalSpeedMetersPerSecond,
+    //                                               attainableMaxRotationalVelocityRadiansPerSecond);
+    // }
 
     // Sets states
     for (SwerveModule module : swerveModules)
